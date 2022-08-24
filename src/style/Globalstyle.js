@@ -4,7 +4,7 @@ export const mainStyle = {
   navyColor: "#1C3879",
   blueColor: "#607EAA",
   bagieColor: "#EAE3D2",
-  glayColor: "#707070",
+  grayColor: "#707070",
 };
 
 export const Globalstyle = createGlobalStyle`
