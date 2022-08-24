@@ -1,7 +1,10 @@
-import { faArrowUpLong } from "@fortawesome/free-solid-svg-icons";
+import {
+  faArrowUpLong,
+  faArrowDownLong,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { mainStyle } from "./style/Globalstyle";
 
 const Wrap = styled.div`
@@ -12,6 +15,7 @@ const Wrap = styled.div`
 const FirstSection = styled.div`
   width: 100%;
   height: 100vh;
+  position: relative;
 `;
 const Header = styled.div`
   width: 100%;
@@ -69,6 +73,36 @@ const MenuText = styled.div`
   &:hover {
     color: ${mainStyle.blueColor};
   }
+`;
+const ScrollIcon = styled.div`
+  width: 50px;
+  height: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  color: white;
+  position: absolute;
+  left: 50%;
+  bottom: 20px;
+  transform: translateX(-50%);
+  svg {
+    animation: scrollbtn 0.5s infinite alternate;
+    position: absolute;
+    bottom: 0;
+  }
+  @keyframes scrollbtn {
+    0% {
+      bottom: 0;
+    }
+    100% {
+      bottom: 20px;
+    }
+  }
+`;
+
+const ScrollText = styled.div`
+  margin-bottom: 40px;
 `;
 const SecondSection = styled.div`
   width: 100%;
@@ -157,6 +191,10 @@ export const Main = () => {
             <MenuText>Toy Project</MenuText>
           </ClickMenu>
         </Header>
+        <ScrollIcon>
+          <ScrollText>Scroll</ScrollText>
+          <FontAwesomeIcon icon={faArrowDownLong} />
+        </ScrollIcon>
       </FirstSection>
       <SecondSection></SecondSection>
       <ThirdSection></ThirdSection>
