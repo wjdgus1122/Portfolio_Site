@@ -5,6 +5,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
 import styled, { keyframes } from "styled-components";
+import { SkillDB } from "./PortDB.";
 import { mainStyle } from "./style/Globalstyle";
 
 const Wrap = styled.div`
@@ -157,6 +158,49 @@ const ScrollText = styled.div`
 const SecondSection = styled.div`
   width: 100%;
   height: 100vh;
+  padding: 0 50px;
+  position: relative;
+`;
+const SkTitle = styled.div`
+  font-size: 80px;
+  font-weight: 900;
+  color: white;
+  padding-top: 10px;
+`;
+const SkillWrap = styled.div`
+  padding-top: 50px;
+  display: flex;
+  justify-content: space-between;
+`;
+const Skill = styled.div`
+  width: 320px;
+  color: white;
+`;
+const SkillImg = styled.div`
+  width: 100%;
+  height: 290px;
+  background-color: white;
+`;
+const SkillText = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+const SkillTitle = styled.div`
+  font-size: 40px;
+  font-weight: 900;
+`;
+const SkillPc = styled.div`
+  font-size: 70px;
+  font-weight: 900;
+`;
+const PjTitle = styled.div`
+  font-size: 80px;
+  font-weight: 900;
+  color: white;
+  position: absolute;
+  left: 50px;
+  bottom: 20px;
 `;
 const ThirdSection = styled.div`
   width: 100%;
@@ -232,7 +276,7 @@ export const Main = () => {
       mainPaths.forEach((path, index) => {
         const length = path.getTotalLength();
         path.style.setProperty("--length", length);
-        path.style.setProperty("--delay", index * 50 + "ms");
+        path.style.setProperty("--delay", index * 100 + "ms");
         path.style.setProperty("--duration", length * 1 + "ms");
       });
       const tstexthandle = (element, textArr) => {
@@ -383,7 +427,25 @@ export const Main = () => {
           <FontAwesomeIcon icon={faArrowDownLong} />
         </ScrollIcon>
       </FirstSection>
-      <SecondSection></SecondSection>
+      <SecondSection>
+        <SkTitle>Skill</SkTitle>
+        <SkillWrap>
+          {SkillDB.map((skill) => (
+            <Skill>
+              <SkillImg
+                style={{
+                  background: `url(${skill.img}) no-repeat center/cover`,
+                }}
+              />
+              <SkillText>
+                <SkillTitle>{skill.name}</SkillTitle>
+                <SkillPc>{skill.percent}</SkillPc>
+              </SkillText>
+            </Skill>
+          ))}
+        </SkillWrap>
+        <PjTitle>Project</PjTitle>
+      </SecondSection>
       <ThirdSection></ThirdSection>
       <ThirdSection></ThirdSection>
       <ThirdSection></ThirdSection>
