@@ -176,10 +176,9 @@ const Skill = styled.div`
   width: 320px;
   color: white;
 `;
-const SkillImg = styled.div`
+const SkillImg = styled.img`
   width: 100%;
   height: 290px;
-  background-color: white;
 `;
 const SkillText = styled.div`
   display: flex;
@@ -305,6 +304,16 @@ export const Main = () => {
         window.requestAnimationFrame(textanimate);
       };
       textanimate();
+      let percent = document.querySelector(".percent");
+      let percount = 0;
+      setInterval(() => {
+        if (percount == 95) {
+          clearInterval();
+        } else {
+          percount += 1;
+          percent.innerHTML = percount + "%";
+        }
+      }, 20);
     };
     mainset();
   }, []);
@@ -432,14 +441,10 @@ export const Main = () => {
         <SkillWrap>
           {SkillDB.map((skill) => (
             <Skill>
-              <SkillImg
-                style={{
-                  background: `url(${skill.img}) no-repeat center/cover`,
-                }}
-              />
+              <SkillImg src={`${skill.img}`} />
               <SkillText>
                 <SkillTitle>{skill.name}</SkillTitle>
-                <SkillPc>{skill.percent}</SkillPc>
+                <SkillPc className="percent">{skill.percent}</SkillPc>
               </SkillText>
             </Skill>
           ))}
