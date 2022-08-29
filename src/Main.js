@@ -1,6 +1,8 @@
 import {
   faArrowUpLong,
   faArrowDownLong,
+  faArrowRightLong,
+  faArrowLeftLong,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
@@ -58,7 +60,7 @@ const ClickMenu = styled.div`
   position: fixed;
   top: 0;
   right: ${(props) => props.menuposi};
-  z-index: 99;
+  z-index: 999;
   transition: 0.5s;
   border-top-left-radius: 30px;
   border-bottom-left-radius: 30px;
@@ -223,9 +225,137 @@ const PjTitle = styled.div`
 const ThirdSection = styled.div`
   width: 100%;
   height: 100vh;
+  position: relative;
+  overflow: hidden;
+`;
+const TitleWrap = styled.div`
+  display: flex;
+  padding: 0 50px;
+  &.titlewrap {
+    justify-content: end;
+  }
+`;
+const TdNumber = styled.div`
+  font-size: 315px;
+  font-weight: 900;
+  color: ${(props) => props.color};
+  text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+`;
+const TdTextWrap = styled.div`
+  margin-left: 65px;
+  padding-top: 214px;
+  position: relative;
+  z-index: 99;
+  &.sctextwrap {
+    margin-left: 0;
+    margin-right: 65px;
+    padding-top: 152px;
+  }
+`;
+const TdTitle = styled.div`
+  font-size: 60px;
+  font-weight: 900;
+  color: white;
+  &.sctitle {
+    text-align: end;
+  }
+`;
+const TdText = styled.div`
+  font-size: 45px;
+  font-weight: 900;
+  margin-left: 100px;
+  color: white;
+  &.sctext {
+    margin-left: 0;
+    margin-right: 100px;
+    text-align: end;
+  }
+`;
+const TdTsTextWrap = styled.div`
+  width: 100%;
+  display: flex;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%) rotateZ(-22deg);
+  &.tdtstextwrap {
+    justify-content: flex-end;
+    transform: translateY(-50%) rotateZ(22deg);
+  }
+`;
+const TdTsText1 = styled.div`
+  display: flex;
+  padding: 3rem 0;
+  font-size: 110px;
+  font-weight: 900;
+  text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+  color: ${(props) => props.color};
+`;
+const TdConWrap = styled.div`
+  display: flex;
+  position: absolute;
+  top: 40%;
+  right: 50px;
+  z-index: 99;
+  &.scconwrap {
+    left: 50px;
+    right: auto;
+  }
+`;
+const TdBtn = styled.div`
+  width: 240px;
+  height: 65px;
+  border: 1px solid white;
+  border-radius: 15px;
+  font-size: 30px;
+  color: white;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 350px;
+  margin-right: 130px;
+  background-color: ${(props) => props.color};
+  &.scbtn {
+    margin-right: 0;
+    margin-left: 130px;
+  }
+`;
+const TdCon = styled.div`
+  width: 815px;
+  height: 530px;
+  border: 1px solid white;
+  border-radius: 30px;
+  background-color: ${(props) => props.color};
+`;
+const TdTopCircle = styled.div`
+  width: 100%;
+  height: 50px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  border-bottom: 1px solid white;
+`;
+const TopCircle = styled.div`
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-right: 25px;
+`;
+const TdConImgWrap = styled.div`
+  width: 100%;
+  height: 480px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+const TdConImg = styled.div`
+  width: 770px;
+  height: 400px;
+  border-radius: 25px;
+  background-color: white;
 `;
 const TopBtn = styled.div`
-  width: 50px;
+  width: 35px;
   height: 100px;
   background-color: rgba(0, 0, 0, 0.5);
   border-radius: 30px;
@@ -237,7 +367,8 @@ const TopBtn = styled.div`
   color: white;
   position: fixed;
   bottom: 20px;
-  right: 50px;
+  right: 7px;
+  font-size: 15px;
 `;
 const BtnText = styled.div`
   writing-mode: tb-rl;
@@ -303,6 +434,9 @@ export const Main = () => {
       const mainPaths = mainGroup.querySelectorAll("path");
       const tsText1 = document.querySelector(".tstext1");
       const tsText2 = document.querySelector(".tstext2");
+      const tdtsText1 = document.querySelector(".tdtstext1");
+      const tdtsText2 = document.querySelector(".tdtstext2");
+      const tdtsText3 = document.querySelector(".tdtstext3");
       const Text1 = "Publishing ReactProject ToyProject".split(" ");
       mainPaths.forEach((path, index) => {
         const length = path.getTotalLength();
@@ -318,8 +452,14 @@ export const Main = () => {
       };
       tstexthandle(tsText1, Text1);
       tstexthandle(tsText2, Text1);
+      tstexthandle(tdtsText1, Text1);
+      tstexthandle(tdtsText2, Text1);
+      tstexthandle(tdtsText3, Text1);
       let count1 = 0;
       let count2 = 0;
+      let count3 = 0;
+      let count4 = 0;
+      let count5 = 0;
       let percenttext = document.getElementsByClassName("percent");
       let percount = 0;
       let percount1 = 0;
@@ -337,8 +477,14 @@ export const Main = () => {
       const textanimate = () => {
         count1++;
         count2++;
+        count3++;
+        count4++;
+        count5++;
         count1 = animateText(count1, tsText1, -1);
         count2 = animateText(count2, tsText2, 1);
+        count3 = animateText(count3, tdtsText1, -1);
+        count4 = animateText(count4, tdtsText2, 1);
+        count5 = animateText(count5, tdtsText3, -1);
         const usscl = window.pageYOffset;
         if (usscl > 700) {
           if (percount < SkillDB[0].percent) {
@@ -502,9 +648,104 @@ export const Main = () => {
           <PjTitle posi={pjtitle}>Project</PjTitle>
         </PjTitleWrap>
       </SecondSection>
-      <ThirdSection></ThirdSection>
-      <ThirdSection></ThirdSection>
-      <ThirdSection></ThirdSection>
+      <ThirdSection>
+        <TitleWrap>
+          <TdNumber color={wrapcolor}>01</TdNumber>
+          <TdTextWrap>
+            <TdTitle>HTML5 / CSS</TdTitle>
+            <TdText>Html 과 Css만을 이용하여 프로젝트</TdText>
+          </TdTextWrap>
+        </TitleWrap>
+        <TdTsTextWrap>
+          <TdTsText1 className="tdtstext1" color={wrapcolor}></TdTsText1>
+        </TdTsTextWrap>
+        <TdConWrap>
+          <TdBtn color={wrapcolor}>
+            View <FontAwesomeIcon icon={faArrowRightLong} />{" "}
+          </TdBtn>
+          <TdCon color={wrapcolor}>
+            <TdTopCircle>
+              <TopCircle
+                style={{ backgroundColor: `${mainStyle.bagieColor}` }}
+              />
+              <TopCircle
+                style={{ backgroundColor: `${mainStyle.blueColor}` }}
+              />
+              <TopCircle style={{ backgroundColor: `white` }} />
+            </TdTopCircle>
+            <TdConImgWrap>
+              <TdConImg />
+            </TdConImgWrap>
+          </TdCon>
+        </TdConWrap>
+      </ThirdSection>
+      <ThirdSection className="second">
+        <TitleWrap className="titlewrap">
+          <TdTextWrap className="sctextwrap">
+            <TdTitle className="sctitle">React</TdTitle>
+            <TdText className="sctext">
+              React를 이용하여 HTML/Css Javascript를 <br /> 이용하여 만든
+              프로젝트
+            </TdText>
+          </TdTextWrap>
+          <TdNumber color={wrapcolor}>02</TdNumber>
+        </TitleWrap>
+        <TdTsTextWrap className="tdtstextwrap">
+          <TdTsText1 className="tdtstext2" color={wrapcolor}></TdTsText1>
+        </TdTsTextWrap>
+        <TdConWrap className="scconwrap">
+          <TdCon color={wrapcolor}>
+            <TdTopCircle>
+              <TopCircle
+                style={{ backgroundColor: `${mainStyle.bagieColor}` }}
+              />
+              <TopCircle
+                style={{ backgroundColor: `${mainStyle.navyColor}` }}
+              />
+              <TopCircle style={{ backgroundColor: `white` }} />
+            </TdTopCircle>
+            <TdConImgWrap>
+              <TdConImg />
+            </TdConImgWrap>
+          </TdCon>
+          <TdBtn color={wrapcolor} className="scbtn">
+            <FontAwesomeIcon icon={faArrowLeftLong} /> View
+          </TdBtn>
+        </TdConWrap>
+      </ThirdSection>
+      <ThirdSection>
+        <TitleWrap>
+          <TdNumber color={wrapcolor}>03</TdNumber>
+          <TdTextWrap>
+            <TdTitle>Toy Project</TdTitle>
+            <TdText>
+              React 및 여러가지 언어를 사용하여 만든 간단한 프로젝트
+            </TdText>
+          </TdTextWrap>
+        </TitleWrap>
+        <TdTsTextWrap>
+          <TdTsText1 className="tdtstext3" color={wrapcolor}></TdTsText1>
+        </TdTsTextWrap>
+        <TdConWrap>
+          <TdBtn color={wrapcolor}>
+            View <FontAwesomeIcon icon={faArrowRightLong} />{" "}
+          </TdBtn>
+          <TdCon color={wrapcolor}>
+            <TdTopCircle>
+              <TopCircle
+                style={{ backgroundColor: `${mainStyle.navyColor}` }}
+              />
+              <TopCircle
+                style={{ backgroundColor: `${mainStyle.blueColor}` }}
+              />
+              <TopCircle style={{ backgroundColor: `white` }} />
+            </TdTopCircle>
+            <TdConImgWrap>
+              <TdConImg />
+            </TdConImgWrap>
+          </TdCon>
+        </TdConWrap>
+      </ThirdSection>
       <TopBtn onClick={topbtnhandle}>
         <FontAwesomeIcon icon={faArrowUpLong} />
         <BtnText>맨위로</BtnText>
