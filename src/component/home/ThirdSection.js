@@ -6,6 +6,7 @@ import {
   faArrowLeftLong,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link } from "react-router-dom";
 
 const Section = styled.div`
   width: 100%;
@@ -200,9 +201,11 @@ export const ThirdSection = ({ concolor }) => {
           <TdTsText1 className="tdtstext1" color={concolor}></TdTsText1>
         </TdTsTextWrap>
         <TdConWrap>
-          <TdBtn color={concolor}>
-            View <FontAwesomeIcon icon={faArrowRightLong} />{" "}
-          </TdBtn>
+          <Link to={"/publishing"}>
+            <TdBtn color={concolor}>
+              View <FontAwesomeIcon icon={faArrowRightLong} />{" "}
+            </TdBtn>
+          </Link>
           <TdCon color={concolor}>
             <TdTopCircle>
               <TopCircle
@@ -248,9 +251,11 @@ export const ThirdSection = ({ concolor }) => {
               <TdConImg />
             </TdConImgWrap>
           </TdCon>
-          <TdBtn color={concolor} className="scbtn">
-            <FontAwesomeIcon icon={faArrowLeftLong} /> View
-          </TdBtn>
+          <Link to={"/react"}>
+            <TdBtn color={concolor} className="scbtn">
+              <FontAwesomeIcon icon={faArrowLeftLong} /> View
+            </TdBtn>
+          </Link>
         </TdConWrap>
       </Section>
       <Section>
@@ -267,9 +272,11 @@ export const ThirdSection = ({ concolor }) => {
           <TdTsText1 className="tdtstext3" color={concolor}></TdTsText1>
         </TdTsTextWrap>
         <TdConWrap>
-          <TdBtn color={concolor}>
-            View <FontAwesomeIcon icon={faArrowRightLong} />{" "}
-          </TdBtn>
+          <Link to={"/toy"}>
+            <TdBtn color={concolor}>
+              View <FontAwesomeIcon icon={faArrowRightLong} />{" "}
+            </TdBtn>
+          </Link>
           <TdCon color={concolor}>
             <TdTopCircle>
               <TopCircle

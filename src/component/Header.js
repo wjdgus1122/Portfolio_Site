@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { mainStyle } from "./../style/Globalstyle";
+import { Link } from "react-router-dom";
 import { useState } from "react";
 
 const Wrap = styled.div`
@@ -96,9 +97,15 @@ export const Header = () => {
       </IconMenu>
 
       <ClickMenu menuposi={hdmenu}>
-        <MenuText className="menutext">Publishing</MenuText>
-        <MenuText>React Project</MenuText>
-        <MenuText>Toy Project</MenuText>
+        <Link to={"/publishing"}>
+          <MenuText className="menutext">Publishing</MenuText>
+        </Link>
+        <Link to={"/react"}>
+          <MenuText>React Project</MenuText>
+        </Link>
+        <Link to={"/toy"}>
+          <MenuText>Toy Project</MenuText>
+        </Link>
       </ClickMenu>
     </Wrap>
   );
