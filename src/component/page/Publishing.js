@@ -3,9 +3,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect } from "react";
 import styled from "styled-components";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination, Mousewheel } from "swiper";
 import { PubDB } from "../../PortDB";
 import { mainStyle } from "../../style/Globalstyle";
 import "swiper/css";
+import "swiper/css/mousewheel";
+import "swiper/css/pagination";
+import "../../style/swipercss.css";
 
 const Wrap = styled.div`
   width: 100%;
@@ -20,17 +24,6 @@ const Title = styled.h3`
   font-weight: 900;
   padding-top: 70px;
   color: white;
-`;
-const Gage = styled.div`
-  width: 500px;
-  height: 2px;
-  background-color: white;
-  display: flex;
-`;
-const Bar = styled.div`
-  width: 100%;
-  height: 100%;
-  background-color: ${mainStyle.grayColor};
 `;
 const SlideWrap = styled.div`
   width: 100%;
@@ -147,14 +140,15 @@ export const Publishing = () => {
   return (
     <Wrap>
       <Title>Html / Css</Title>
-      <Gage>
-        {PubDB.map((con) => (
-          <>
-            <Bar />
-          </>
-        ))}
-      </Gage>
-      <Swiper>
+      <Swiper
+        modules={[Pagination, Mousewheel]}
+        slidesPerView={1}
+        spaceBetween={30}
+        pagination={{
+          type: "progressbar",
+        }}
+        mousewheel={true}
+      >
         {PubDB.map((con) => (
           <SwiperSlide>
             <SlideWrap>
@@ -170,7 +164,7 @@ export const Publishing = () => {
                     </a>
                     <a target="_blank" href={`${con.gitpost}`}>
                       <GitBtn>
-                        <i class="fa-brands fa-github"></i> GitHub
+                        <i className="fa-brands fa-github"></i> GitHub
                       </GitBtn>
                     </a>
                   </BtnWrap>
