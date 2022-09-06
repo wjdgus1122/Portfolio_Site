@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import styled from "styled-components";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Mousewheel } from "swiper";
-import { PubDB } from "../../PortDB";
+import { PubDB, ReactDB, ToyDB } from "../../PortDB";
 import { mainStyle } from "../../style/Globalstyle";
 import "swiper/css";
 import "swiper/css/mousewheel";
@@ -14,7 +14,7 @@ import "../../style/swipercss.css";
 const Wrap = styled.div`
   width: 100%;
   height: 100vh;
-  background-color: ${mainStyle.navyColor};
+  background-color: ${mainStyle.bagieColor};
   padding: 0 50px;
   position: relative;
   overflow: hidden;
@@ -43,7 +43,7 @@ const SlideNum = styled.div`
   font-size: 315px;
   font-weight: 900;
   text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
-  color: ${mainStyle.navyColor};
+  color: ${mainStyle.bagieColor};
 `;
 const SlideTextWrap = styled.div`
   display: flex;
@@ -110,14 +110,14 @@ const TsText = styled.div`
   font-size: 110px;
   font-weight: 900;
   text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
-  color: ${mainStyle.navyColor};
+  color: ${mainStyle.bagieColor};
 `;
 
-export const Publishing = () => {
+export const ToyPj = () => {
   useEffect(() => {
     const pubset = () => {
       const ts = document.querySelector(".tstext");
-      const text1 = "Html Css Publishing SeoulGarden".split(" ");
+      const text1 = "Html Css JavaScript React ToyProject Login".split(" ");
 
       const textarr = (ele, arr) => {
         arr.push(...arr);
@@ -146,11 +146,11 @@ export const Publishing = () => {
   }, []);
   return (
     <Wrap>
-      <Title>Html / Css</Title>
-      {PubDB.length < 2 ? (
+      <Title>ToyProject</Title>
+      {ToyDB.length < 2 ? (
         <Swiper>
           <Page>1 / 1</Page>
-          {PubDB.map((con) => (
+          {ToyDB.map((con) => (
             <SwiperSlide>
               <SlideWrap>
                 <SlideNum>{con.pjnumber}</SlideNum>
@@ -186,7 +186,7 @@ export const Publishing = () => {
           }}
           mousewheel={true}
         >
-          {PubDB.map((con) => (
+          {ToyDB.map((con) => (
             <SwiperSlide>
               <SlideWrap>
                 <SlideNum>{con.pjnumber}</SlideNum>

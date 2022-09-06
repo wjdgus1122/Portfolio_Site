@@ -40,15 +40,15 @@ export const PubDB = [
     pjpost: `https://hij00.github.io/seoul_garden_renewal/`,
     gitpost: `https://github.com/wjdgus1122/SeoulGarden`,
   },
-  {
-    id: 1,
-    pjnumber: "02",
-    img: `${pub_1}`,
-    name: `서울식물원 사이트를 리뉴얼 한 프로젝트`,
-    project: "Team Project",
-    pjpost: `https://hij00.github.io/seoul_garden_renewal/`,
-    gitpost: `https://github.com/wjdgus1122/SeoulGarden`,
-  },
+  // {
+  //   id: 1,
+  //   pjnumber: "02",
+  //   img: `${pub_1}`,
+  //   name: `서울식물원 사이트를 리뉴얼 한 프로젝트`,
+  //   project: "Team Project",
+  //   pjpost: `https://hij00.github.io/seoul_garden_renewal/`,
+  //   gitpost: `https://github.com/wjdgus1122/SeoulGarden`,
+  // },
 ];
 
 export const ReactDB = [

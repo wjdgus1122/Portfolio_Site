@@ -2,16 +2,25 @@ import styled from "styled-components";
 import { mainStyle } from "./../style/Globalstyle";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHouse } from "@fortawesome/free-solid-svg-icons";
 
 const Wrap = styled.div`
   width: 100%;
   height: 80px;
   display: flex;
+  justify-content: end;
   align-items: center;
   position: fixed;
   top: 0;
   left: 0;
   z-index: 9999;
+  & a {
+    font-size: 25px;
+    color: white;
+    padding-right: 130px;
+    padding-bottom: 5px;
+  }
 `;
 const IconMenu = styled.div`
   position: absolute;
@@ -85,6 +94,9 @@ export const Header = () => {
   };
   return (
     <Wrap>
+      <Link to={"/"}>
+        <FontAwesomeIcon icon={faHouse} />
+      </Link>
       <IconMenu
         onClick={hdhandle}
         toprt={topbar}
@@ -98,13 +110,15 @@ export const Header = () => {
 
       <ClickMenu menuposi={hdmenu}>
         <Link to={"/publishing"}>
-          <MenuText className="menutext">Publishing</MenuText>
+          <MenuText className="menutext" onClick={hdhandle}>
+            Publishing
+          </MenuText>
         </Link>
         <Link to={"/react"}>
-          <MenuText>React Project</MenuText>
+          <MenuText onClick={hdhandle}>React Project</MenuText>
         </Link>
         <Link to={"/toy"}>
-          <MenuText>Toy Project</MenuText>
+          <MenuText onClick={hdhandle}>Toy Project</MenuText>
         </Link>
       </ClickMenu>
     </Wrap>
