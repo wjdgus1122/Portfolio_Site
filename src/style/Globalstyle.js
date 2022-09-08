@@ -1,9 +1,10 @@
 import { createGlobalStyle } from "styled-components";
 
 export const mainStyle = {
-  navyColor: "#1C3879",
-  blueColor: "#607EAA",
-  bagieColor: "#EAE3D2",
+  mainColor: "#493323",
+  navyColor: "#91684A",
+  blueColor: "#EAAC7F",
+  bagieColor: "#FFDF91",
   grayColor: "#707070",
   gitColor: "#6000AA",
 };

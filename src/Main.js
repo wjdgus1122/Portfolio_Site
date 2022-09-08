@@ -35,11 +35,13 @@ const BtnText = styled.div`
 `;
 
 export const Main = () => {
-  const [wrapcolor, setWrapColor] = useState(`${mainStyle.navyColor}`);
+  const [wrapcolor, setWrapColor] = useState(`${mainStyle.mainColor}`);
 
   const wphandle = () => {
     const scl = window.pageYOffset;
-    if (scl < 2334) {
+    if (scl < 900) {
+      setWrapColor(`${mainStyle.mainColor}`);
+    } else if (scl > 900 && scl < 2334) {
       setWrapColor(`${mainStyle.navyColor}`);
     } else if (scl > 2335 && scl < 3234) {
       setWrapColor(`${mainStyle.blueColor}`);

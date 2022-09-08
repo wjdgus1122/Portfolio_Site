@@ -15,6 +15,7 @@ const Wrap = styled.div`
   top: 0;
   left: 0;
   z-index: 9999;
+  background-color: ${(props) => props.bgColor};
   & a {
     font-size: 25px;
     color: white;
@@ -77,6 +78,7 @@ export const Header = () => {
   const [bottombar, setBottombar] = useState(`0`);
   const [barcolor, setBarColor] = useState("white");
   const [hdmenu, setHdMenu] = useState("-400px");
+  const [sclbg, setSclBg] = useState("none");
   const hdhandle = () => {
     if (topbar === "0") {
       setTopbar(`45deg`);
@@ -92,8 +94,23 @@ export const Header = () => {
       setHdMenu("-400px");
     }
   };
+  const hdscl = () => {
+    const scl = window.pageYOffset;
+    if (scl < 10) {
+      setSclBg(`none`);
+    } else if (scl > 10 && scl < 1100) {
+      setSclBg(`${mainStyle.mainColor}`);
+    } else if (scl < 2334 && 1100 < scl) {
+      setSclBg(`${mainStyle.navyColor}`);
+    } else if (scl > 2335 && scl < 3234) {
+      setSclBg(`${mainStyle.blueColor}`);
+    } else if (scl > 3235) {
+      setSclBg(`${mainStyle.bagieColor}`);
+    }
+  };
+  window.addEventListener("scroll", hdscl);
   return (
-    <Wrap>
+    <Wrap bgColor={sclbg}>
       <Link to={"/"}>
         <FontAwesomeIcon icon={faHouse} />
       </Link>

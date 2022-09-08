@@ -12,8 +12,11 @@ const Section = styled.div`
 `;
 
 const MainLogo = styled.div`
-  padding-top: 120px;
+  padding-top: 140px;
   padding-left: 50px;
+  position: relative;
+  z-index: 99;
+  transform: rotateZ(-10deg);
   & svg {
     fill: none;
     width: 1280px;
@@ -38,26 +41,26 @@ const Transtext1 = styled.div`
   display: flex;
   position: absolute;
   top: 0;
-  right: 0;
-  transform: rotateZ(25deg);
+  left: 0;
+  transform: rotateZ(-10deg);
 `;
 const Transtext2 = styled.div`
-  width: 50%;
+  width: 100%;
   display: flex;
   justify-content: flex-end;
   position: absolute;
-  bottom: 50px;
+  bottom: 100px;
   left: -100px;
-  transform: rotateZ(25deg);
+  transform: rotateZ(-10deg);
 `;
 const TsText = styled.p`
   display: flex;
   padding: 3rem 0;
-  font-size: 4rem;
+  font-size: 50px;
   font-weight: 900;
   text-shadow: -1px 0 ${mainStyle.grayColor}, 0 1px ${mainStyle.grayColor},
     1px 0 ${mainStyle.grayColor}, 0 -1px ${mainStyle.grayColor};
-  color: ${mainStyle.navyColor};
+  color: ${mainStyle.mainColor};
 `;
 const ScrollIcon = styled.div`
   width: 50px;

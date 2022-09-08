@@ -27,7 +27,7 @@ const TitleWrap = styled.div`
 const TdNumber = styled.div`
   font-size: 315px;
   font-weight: 900;
-  color: ${(props) => props.color};
+  color: white;
   text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
 `;
 const TdTextWrap = styled.div`

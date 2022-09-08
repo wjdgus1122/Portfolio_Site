@@ -3,13 +3,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect } from "react";
 import styled from "styled-components";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination, Mousewheel } from "swiper";
+import { Pagination, Mousewheel, Navigation } from "swiper";
 import { PubDB } from "../../PortDB";
 import { mainStyle } from "../../style/Globalstyle";
 import "swiper/css";
 import "swiper/css/mousewheel";
 import "swiper/css/pagination";
-import "../../style/swipercss.css";
+import "swiper/css/navigation";
+import "../../style/swiperstyle.css";
 
 const Wrap = styled.div`
   width: 100%;
@@ -178,13 +179,14 @@ export const Publishing = () => {
         </Swiper>
       ) : (
         <Swiper
-          modules={[Pagination, Mousewheel]}
+          modules={[Pagination, Mousewheel, Navigation]}
           slidesPerView={1}
           spaceBetween={30}
           pagination={{
             type: "progressbar",
           }}
           mousewheel={true}
+          navigation
         >
           {PubDB.map((con) => (
             <SwiperSlide>

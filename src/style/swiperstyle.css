@@ -10,3 +10,6 @@
 .swiper-pagination-progressbar .swiper-pagination-progressbar-fill{
     background: white;
 }
+.swiper-button-next, .swiper-button-prev{
+    color: white;
+}
