@@ -7,6 +7,9 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
+import pubimg from "./../../img/publishing/seoul.png";
+import reactimg from "./../../img/react/Movie.png";
+import toyimg from "./../../img/toy/Login.png";
 
 const Section = styled.div`
   width: 100%;
@@ -134,7 +137,7 @@ const TdConImgWrap = styled.div`
   justify-content: center;
   align-items: center;
 `;
-const TdConImg = styled.div`
+const TdConImg = styled.img`
   width: 770px;
   height: 400px;
   border-radius: 25px;
@@ -217,7 +220,7 @@ export const ThirdSection = ({ concolor }) => {
               <TopCircle style={{ backgroundColor: `white` }} />
             </TdTopCircle>
             <TdConImgWrap>
-              <TdConImg />
+              <TdConImg src={pubimg} />
             </TdConImgWrap>
           </TdCon>
         </TdConWrap>
@@ -248,7 +251,7 @@ export const ThirdSection = ({ concolor }) => {
               <TopCircle style={{ backgroundColor: `white` }} />
             </TdTopCircle>
             <TdConImgWrap>
-              <TdConImg />
+              <TdConImg src={reactimg} />
             </TdConImgWrap>
           </TdCon>
           <Link to={"/react"}>
@@ -288,7 +291,7 @@ export const ThirdSection = ({ concolor }) => {
               <TopCircle style={{ backgroundColor: `white` }} />
             </TdTopCircle>
             <TdConImgWrap>
-              <TdConImg />
+              <TdConImg src={toyimg} />
             </TdConImgWrap>
           </TdCon>
         </TdConWrap>

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { SkillDB } from "../../PortDB";
 
 const Section = styled.div`
@@ -25,18 +25,29 @@ const SkTitle = styled.div`
   left: 0;
   transition: 0.5s;
 `;
+const SkillCon = styled.div`
+  width: 100%;
+  height: 350px;
+  margin-top: 50px;
+  position: relative;
+  overflow: hidden;
+`;
 const SkillWrap = styled.div`
-  padding-top: 50px;
+  width: 100%;
   display: flex;
-  justify-content: space-between;
+  position: absolute;
+  top: ${(props) => props.posi};
+  left: 0;
+  transition: 0.5s;
 `;
 const Skill = styled.div`
-  width: 320px;
+  width: 200px;
   color: white;
+  margin-right: 50px;
 `;
 const SkillImg = styled.img`
   width: 100%;
-  height: 290px;
+  height: 200px;
 `;
 const SkillText = styled.div`
   display: flex;
@@ -45,10 +56,6 @@ const SkillText = styled.div`
 `;
 const SkillTitle = styled.div`
   font-size: 40px;
-  font-weight: 900;
-`;
-const SkillPc = styled.div`
-  font-size: 70px;
   font-weight: 900;
 `;
 const PjTitleWrap = styled.div`
@@ -70,13 +77,16 @@ const PjTitle = styled.div`
 
 export const SecondSection = () => {
   const [sktitle, setSkTitle] = useState("115px");
+  const [skposi, setSkPosi] = useState("350px");
   const [pjtitle, setPjTitle] = useState("115px");
   const wphandle = () => {
     const scl = window.pageYOffset;
     if (scl > 700) {
       setSkTitle("0");
+      setSkPosi("0");
     } else {
       setSkTitle("115px");
+      setSkPosi("350px");
     }
 
     if (scl > 900) {
@@ -86,57 +96,25 @@ export const SecondSection = () => {
     }
   };
   window.addEventListener("scroll", wphandle);
-  useEffect(() => {
-    const mainset = () => {
-      let percenttext = document.getElementsByClassName("percent");
-      let percount = 0;
-      let percount1 = 0;
-      let percount2 = 0;
-      let percount3 = 0;
 
-      const textanimate = () => {
-        const usscl = window.pageYOffset;
-        if (usscl > 700) {
-          if (percount < SkillDB[0].percent) {
-            percount++;
-            percenttext[0].innerHTML = percount + "%";
-          }
-          if (percount1 < SkillDB[1].percent) {
-            percount1++;
-            percenttext[1].innerHTML = percount + "%";
-          }
-          if (percount2 < SkillDB[2].percent) {
-            percount2++;
-            percenttext[2].innerHTML = percount + "%";
-          }
-          if (percount3 < SkillDB[3].percent) {
-            percount3++;
-            percenttext[3].innerHTML = percount + "%";
-          }
-        }
-        window.requestAnimationFrame(textanimate);
-      };
-      textanimate();
-    };
-    mainset();
-  }, []);
   return (
     <>
       <Section>
         <SkTitleWrap>
           <SkTitle posi={sktitle}>Skill</SkTitle>
         </SkTitleWrap>
-        <SkillWrap className="skillwrap">
-          {SkillDB.map((skill) => (
-            <Skill key={skill.id}>
-              <SkillImg src={`${skill.img}`} />
-              <SkillText className="skilltext">
-                <SkillTitle>{skill.name}</SkillTitle>
-                <SkillPc className="percent"></SkillPc>
-              </SkillText>
-            </Skill>
-          ))}
-        </SkillWrap>
+        <SkillCon>
+          <SkillWrap posi={skposi}>
+            {SkillDB.map((skill) => (
+              <Skill key={skill.id}>
+                <SkillImg src={`${skill.img}`} />
+                <SkillText>
+                  <SkillTitle>{skill.name}</SkillTitle>
+                </SkillText>
+              </Skill>
+            ))}
+          </SkillWrap>
+        </SkillCon>
         <PjTitleWrap>
           <PjTitle posi={pjtitle}>Project</PjTitle>
         </PjTitleWrap>
