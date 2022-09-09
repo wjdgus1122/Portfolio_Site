@@ -19,15 +19,32 @@ const Wrap = styled.div`
   & a {
     font-size: 25px;
     color: white;
-    padding-right: 130px;
-    padding-bottom: 5px;
+  }
+  & a:first-child {
+    margin-right: 50px;
+  }
+  & a:hover {
+    color: ${mainStyle.bagieColor};
+  }
+  @media screen and (max-width: 500px) {
+    & a:first-child {
+      margin-right: 0;
+    }
+  }
+`;
+const Menu = styled.div`
+  font-weight: 900;
+  margin-right: 50px;
+  @media screen and (max-width: 500px) {
+    display: none;
   }
 `;
 const IconMenu = styled.div`
   position: absolute;
-  right: 50px;
+  right: 20px;
   z-index: 9999;
   cursor: pointer;
+  display: none;
   & .menubar:first-child {
     transform: rotateZ(${(props) => props.toprt})
       translate(${(props) => props.topts});
@@ -40,13 +57,16 @@ const IconMenu = styled.div`
     transition: 0.5s;
     background-color: ${(props) => props.color};
   }
+  @media screen and (max-width: 500px) {
+    display: block;
+  }
 `;
 const Menubar = styled.div`
-  width: 40px;
-  height: 5px;
+  width: 30px;
+  height: 3px;
 `;
 const ClickMenu = styled.div`
-  width: 400px;
+  width: 100%;
   height: 100vh;
   background-color: white;
   position: fixed;
@@ -54,22 +74,26 @@ const ClickMenu = styled.div`
   right: ${(props) => props.menuposi};
   z-index: 999;
   transition: 0.5s;
-  border-top-left-radius: 30px;
-  border-bottom-left-radius: 30px;
-  & .menutext {
-    padding-top: 100px;
+  display: none;
+  @media screen and (max-width: 500px) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    & a {
+      width: 100%;
+    }
   }
 `;
 const MenuText = styled.div`
-  font-size: 40px;
+  font-size: 35px;
   font-weight: 900;
-  color: black;
-  padding-left: 30px;
-  margin-bottom: 70px;
+  color: ${mainStyle.mainColor};
+  padding-bottom: 30px;
   cursor: pointer;
-  &:hover {
-    color: ${mainStyle.blueColor};
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const Header = () => {
@@ -77,42 +101,45 @@ export const Header = () => {
   const [topbarts, setTopbarTs] = useState("0");
   const [bottombar, setBottombar] = useState(`0`);
   const [barcolor, setBarColor] = useState("white");
-  const [hdmenu, setHdMenu] = useState("-400px");
+  const [hdmenu, setHdMenu] = useState("-100%");
   const [sclbg, setSclBg] = useState("none");
   const hdhandle = () => {
     if (topbar === "0") {
       setTopbar(`45deg`);
       setBottombar(`-45deg`);
-      setTopbarTs("10px, 10px");
-      setBarColor("black");
+      setTopbarTs("9px, 9px");
+      setBarColor(`${mainStyle.mainColor}`);
       setHdMenu(`0`);
     } else {
       setTopbar(`0`);
       setBottombar(`0`);
       setTopbarTs("0");
       setBarColor("white");
-      setHdMenu("-400px");
+      setHdMenu("-100%");
     }
   };
   const hdscl = () => {
     const scl = window.pageYOffset;
     if (scl < 10) {
       setSclBg(`none`);
-    } else if (scl > 10 && scl < 1100) {
+    } else {
       setSclBg(`${mainStyle.mainColor}`);
-    } else if (scl < 2334 && 1100 < scl) {
-      setSclBg(`${mainStyle.navyColor}`);
-    } else if (scl > 2335 && scl < 3234) {
-      setSclBg(`${mainStyle.blueColor}`);
-    } else if (scl > 3235) {
-      setSclBg(`${mainStyle.bagieColor}`);
     }
   };
   window.addEventListener("scroll", hdscl);
   return (
     <Wrap bgColor={sclbg}>
       <Link to={"/"}>
-        <FontAwesomeIcon icon={faHouse} />
+        <Menu>Home</Menu>
+      </Link>
+      <Link to={"/publishing"}>
+        <Menu>Publishing</Menu>
+      </Link>
+      <Link to={"/react"}>
+        <Menu>React Project</Menu>
+      </Link>
+      <Link to={"/toy"}>
+        <Menu>Toy Project</Menu>
       </Link>
       <IconMenu
         onClick={hdhandle}
@@ -126,10 +153,11 @@ export const Header = () => {
       </IconMenu>
 
       <ClickMenu menuposi={hdmenu}>
+        <Link to={"/"}>
+          <MenuText onClick={hdhandle}>Home</MenuText>
+        </Link>
         <Link to={"/publishing"}>
-          <MenuText className="menutext" onClick={hdhandle}>
-            Publishing
-          </MenuText>
+          <MenuText onClick={hdhandle}>Publishing</MenuText>
         </Link>
         <Link to={"/react"}>
           <MenuText onClick={hdhandle}>React Project</MenuText>

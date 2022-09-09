@@ -35,6 +35,20 @@ const MainLogo = styled.div`
       fill: white;
     }
   }
+  @media screen and (max-width: 500px) {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 0;
+    padding-left: 0;
+    transform: rotateZ(0);
+    & svg {
+      fill: none;
+      width: 400px;
+    }
+  }
 `;
 const Transtext1 = styled.div`
   width: 50%;
@@ -43,6 +57,9 @@ const Transtext1 = styled.div`
   top: 0;
   left: 0;
   transform: rotateZ(-10deg);
+  @media screen and (max-width: 500px) {
+    top: 100px;
+  }
 `;
 const Transtext2 = styled.div`
   width: 100%;
@@ -61,6 +78,9 @@ const TsText = styled.p`
   text-shadow: -1px 0 ${mainStyle.grayColor}, 0 1px ${mainStyle.grayColor},
     1px 0 ${mainStyle.grayColor}, 0 -1px ${mainStyle.grayColor};
   color: ${mainStyle.mainColor};
+  @media screen and (max-width: 500px) {
+    font-size: 30px;
+  }
 `;
 const ScrollIcon = styled.div`
   width: 50px;
