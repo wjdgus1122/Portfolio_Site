@@ -2,8 +2,6 @@ import styled from "styled-components";
 import { mainStyle } from "./../style/Globalstyle";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHouse } from "@fortawesome/free-solid-svg-icons";
 
 const Wrap = styled.div`
   width: 100%;
@@ -19,9 +17,6 @@ const Wrap = styled.div`
   & a {
     font-size: 25px;
     color: white;
-  }
-  & a:first-child {
-    margin-right: 50px;
   }
   & a:hover {
     color: ${mainStyle.bagieColor};

@@ -1,10 +1,9 @@
 import { faArrowRightLong } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Mousewheel, Navigation } from "swiper";
-import { ToyDB } from "../../PortDB";
 import { mainStyle } from "../../style/Globalstyle";
 import "swiper/css";
 import "swiper/css/mousewheel";
@@ -15,16 +14,22 @@ import "../../style/swiperstyle.css";
 const Wrap = styled.div`
   width: 100%;
   height: 100vh;
-  background-color: ${mainStyle.bagieColor};
+  background-color: ${(props) => props.color};
   padding: 0 50px;
   position: relative;
   overflow: hidden;
+  @media screen and (max-width: 500px) {
+    padding: 0 20px;
+  }
 `;
 const Title = styled.h3`
   font-size: 60px;
   font-weight: 900;
   padding-top: 70px;
   color: white;
+  @media screen and (max-width: 500px) {
+    font-size: 40px;
+  }
 `;
 const Page = styled.div`
   font-size: 20px;
@@ -32,6 +37,10 @@ const Page = styled.div`
   position: absolute;
   top: 0;
   right: 0;
+  @media screen and (max-width: 500px) {
+    font-size: 18px;
+    top: 120px;
+  }
 `;
 const SlideWrap = styled.div`
   width: 100%;
@@ -39,17 +48,40 @@ const SlideWrap = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: center;
+  @media screen and (max-width: 500px) {
+    display: block;
+    position: relative;
+  }
 `;
 const SlideNum = styled.div`
   font-size: 315px;
   font-weight: 900;
   text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
-  color: ${mainStyle.bagieColor};
+  color: ${(props) => props.color};
+  @media screen and (max-width: 500px) {
+    font-size: 100px;
+    padding-top: 6px;
+  }
 `;
+// const MoSlideTitle = styled.div`
+//   font-size: 20px;
+//   font-weight: 900;
+//   color: white;
+//   display: none;
+//   @media screen and (max-width: 500px) {
+//     display: block;
+//     position: absolute;
+//     top: 50px;
+//     left: 130px;
+//   }
+// `;
 const SlideTextWrap = styled.div`
   display: flex;
   height: 100%;
   align-items: center;
+  @media screen and (max-width: 500px) {
+    height: 200px;
+  }
 `;
 const TextWrap = styled.div`
   width: 350px;
@@ -57,11 +89,23 @@ const TextWrap = styled.div`
   font-size: 35px;
   font-weight: 900;
   color: white;
+  @media screen and (max-width: 500px) {
+    width: 100%;
+    font-size: 20px;
+    text-align: center;
+    position: absolute;
+    left: 0;
+    bottom: 80px;
+  }
 `;
 const BtnWrap = styled.div`
   width: 100%;
   display: flex;
   margin-top: 30px;
+  @media screen and (max-width: 500px) {
+    justify-content: center;
+    align-items: center;
+  }
 `;
 const PostBtn = styled.div`
   width: 150px;
@@ -79,6 +123,13 @@ const PostBtn = styled.div`
     background-color: #333;
     color: white;
   }
+  @media screen and (max-width: 500px) {
+    background-color: #333;
+    color: white;
+    svg {
+      display: none;
+    }
+  }
 `;
 const GitBtn = styled.div`
   width: 150px;
@@ -95,10 +146,22 @@ const GitBtn = styled.div`
     background-color: ${mainStyle.gitColor};
     color: white;
   }
+  @media screen and (max-width: 500px) {
+    background-color: ${mainStyle.gitColor};
+    color: white;
+  }
 `;
 const SlideImg = styled.img`
   width: 745px;
   height: 490px;
+  @media screen and (max-width: 500px) {
+    width: 100%;
+    height: 300px;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-40%);
+  }
 `;
 const TsTextWrap = styled.div`
   width: 100%;
@@ -111,15 +174,18 @@ const TsText = styled.div`
   font-size: 110px;
   font-weight: 900;
   text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
-  color: ${mainStyle.bagieColor};
+  color: ${(props) => props.color};
+  @media screen and (max-width: 500px) {
+    font-size: 60px;
+  }
 `;
 
-export const ToyPj = () => {
+export const ProjectPage = ({ title, Db, tstext, bgcolor }) => {
+  
   useEffect(() => {
     const pubset = () => {
       const ts = document.querySelector(".tstext");
-      const text1 = "Html Css JavaScript React ToyProject Login".split(" ");
-
+      const text1 = `${tstext}`.split(" ");
       const textarr = (ele, arr) => {
         arr.push(...arr);
         for (let i = 0; i < arr.length; i++) {
@@ -146,15 +212,16 @@ export const ToyPj = () => {
     pubset();
   }, []);
   return (
-    <Wrap>
-      <Title>ToyProject</Title>
-      {ToyDB.length < 2 ? (
+    <Wrap color={bgcolor}>
+      <Title className="title">{title}</Title>
+      {Db.length < 2 ? (
         <Swiper>
           <Page>1 / 1</Page>
-          {ToyDB.map((con) => (
+          {Db.map((con) => (
             <SwiperSlide>
               <SlideWrap>
-                <SlideNum>{con.pjnumber}</SlideNum>
+                <SlideNum color={bgcolor}>{con.pjnumber}</SlideNum>
+                {/* <MoSlideTitle>{con.name}</MoSlideTitle> */}
                 <SlideTextWrap>
                   <TextWrap>
                     {con.name}
@@ -187,11 +254,14 @@ export const ToyPj = () => {
           }}
           mousewheel={true}
           navigation
+          observer={true}
+          observeParents={true}
         >
-          {ToyDB.map((con) => (
+          {Db.map((con) => (
             <SwiperSlide>
               <SlideWrap>
-                <SlideNum>{con.pjnumber}</SlideNum>
+                <SlideNum color={bgcolor}>{con.pjnumber}</SlideNum>
+                {/* <MoSlideTitle>{con.name}</MoSlideTitle> */}
                 <SlideTextWrap>
                   <TextWrap>
                     {con.name}
@@ -216,7 +286,7 @@ export const ToyPj = () => {
         </Swiper>
       )}
       <TsTextWrap>
-        <TsText className="tstext"></TsText>
+        <TsText className="tstext" color={bgcolor}></TsText>
       </TsTextWrap>
     </Wrap>
   );
