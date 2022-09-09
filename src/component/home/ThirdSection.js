@@ -16,6 +16,9 @@ const Section = styled.div`
   height: 100vh;
   position: relative;
   overflow: hidden;
+  @media screen and (max-width: 500px) {
+    height: 70vh;
+  }
 `;
 const TitleWrap = styled.div`
   display: flex;
@@ -23,12 +26,20 @@ const TitleWrap = styled.div`
   &.titlewrap {
     justify-content: end;
   }
+  @media screen and (max-width: 500px) {
+    height: 200px;
+    padding: 0 20px;
+    position: relative;
+  }
 `;
 const TdNumber = styled.div`
   font-size: 315px;
   font-weight: 900;
   color: white;
   text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+  @media screen and (max-width: 500px) {
+    font-size: 100px;
+  }
 `;
 const TdTextWrap = styled.div`
   margin-left: 65px;
@@ -40,6 +51,15 @@ const TdTextWrap = styled.div`
     margin-right: 65px;
     padding-top: 152px;
   }
+  @media screen and (max-width: 500px) {
+    margin-left: 20px;
+    padding-top: 65px;
+    &.sctextwrap {
+      margin-left: 0;
+      margin-right: 30px;
+      padding-top: 65px;
+    }
+  }
 `;
 const TdTitle = styled.div`
   font-size: 60px;
@@ -47,6 +67,9 @@ const TdTitle = styled.div`
   color: white;
   &.sctitle {
     text-align: end;
+  }
+  @media screen and (max-width: 500px) {
+    font-size: 40px;
   }
 `;
 const TdText = styled.div`
@@ -58,6 +81,21 @@ const TdText = styled.div`
     margin-left: 0;
     margin-right: 100px;
     text-align: end;
+  }
+  @media screen and (max-width: 500px) {
+    display: none;
+  }
+`;
+const MoTdText = styled.div`
+  display: none;
+  @media screen and (max-width: 500px) {
+    display: block;
+    font-size: 22px;
+    font-weight: 900;
+    color: white;
+    position: absolute;
+    left: 20px;
+    bottom: 0;
   }
 `;
 const TdTsTextWrap = styled.div`
@@ -79,6 +117,9 @@ const TdTsText1 = styled.div`
   font-weight: 900;
   text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
   color: ${(props) => props.color};
+  @media screen and (max-width: 500px) {
+    font-size: 60px;
+  }
 `;
 const TdConWrap = styled.div`
   display: flex;
@@ -89,6 +130,16 @@ const TdConWrap = styled.div`
   &.scconwrap {
     left: 50px;
     right: auto;
+  }
+  @media screen and (max-width: 500px) {
+    width: 100%;
+    display: block;
+    top: 36%;
+    right: auto;
+    padding: 0 20px;
+    &.scconwrap {
+      left: auto;
+    }
   }
 `;
 const TdBtn = styled.div`
@@ -108,6 +159,23 @@ const TdBtn = styled.div`
     margin-right: 0;
     margin-left: 130px;
   }
+  @media screen and (max-width: 500px) {
+    width: 150px;
+    height: 40px;
+    font-size: 20px;
+    border-radius: 8px;
+    position: absolute;
+    left: 50%;
+    bottom: -65px;
+    transform: translateX(-50%);
+    svg {
+      display: none;
+    }
+    &.scbtn {
+      margin-right: 0;
+      margin-left: 0;
+    }
+  }
 `;
 const TdCon = styled.div`
   width: 815px;
@@ -115,6 +183,11 @@ const TdCon = styled.div`
   border: 1px solid white;
   border-radius: 30px;
   background-color: ${(props) => props.color};
+  @media screen and (max-width: 500px) {
+    width: 100%;
+    height: 260px;
+    border-radius: 15px;
+  }
 `;
 const TdTopCircle = styled.div`
   width: 100%;
@@ -123,12 +196,20 @@ const TdTopCircle = styled.div`
   justify-content: flex-end;
   align-items: center;
   border-bottom: 1px solid white;
+  @media screen and (max-width: 500px) {
+    height: 30px;
+  }
 `;
 const TopCircle = styled.div`
   width: 30px;
   height: 30px;
   border-radius: 50%;
   margin-right: 25px;
+  @media screen and (max-width: 500px) {
+    width: 15px;
+    height: 15px;
+    margin-right: 12px;
+  }
 `;
 const TdConImgWrap = styled.div`
   width: 100%;
@@ -136,12 +217,19 @@ const TdConImgWrap = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  @media screen and (max-width: 500px) {
+    height: 230px;
+  }
 `;
 const TdConImg = styled.img`
   width: 770px;
   height: 400px;
   border-radius: 25px;
-  background-color: white;
+  @media screen and (max-width: 500px) {
+    width: 90%;
+    height: 190px;
+    border-radius: 10px;
+  }
 `;
 
 export const ThirdSection = ({ concolor }) => {
@@ -196,9 +284,10 @@ export const ThirdSection = ({ concolor }) => {
         <TitleWrap>
           <TdNumber color={concolor}>01</TdNumber>
           <TdTextWrap>
-            <TdTitle>HTML5 / CSS</TdTitle>
-            <TdText>Html 과 Css만을 이용하여 프로젝트</TdText>
+            <TdTitle>Publishing</TdTitle>
+            <TdText>Html 과 Css만을 이용하여 만든 프로젝트</TdText>
           </TdTextWrap>
+          <MoTdText>Html 과 Css만을 이용하여 만든 프로젝트</MoTdText>
         </TitleWrap>
         <TdTsTextWrap>
           <TdTsText1 className="tdtstext1" color={concolor}></TdTsText1>
@@ -235,6 +324,9 @@ export const ThirdSection = ({ concolor }) => {
             </TdText>
           </TdTextWrap>
           <TdNumber color={concolor}>02</TdNumber>
+          <MoTdText className="scmotext">
+            React를 이용하여 HTML/Css Javascript를 이용하여 만든 프로젝트
+          </MoTdText>
         </TitleWrap>
         <TdTsTextWrap className="tdtstextwrap">
           <TdTsText1 className="tdtstext2" color={concolor}></TdTsText1>
@@ -270,6 +362,9 @@ export const ThirdSection = ({ concolor }) => {
               React 및 여러가지 언어를 사용하여 만든 간단한 프로젝트
             </TdText>
           </TdTextWrap>
+          <MoTdText>
+            React 및 여러가지 언어를 사용하여 만든 간단한 프로젝트
+          </MoTdText>
         </TitleWrap>
         <TdTsTextWrap>
           <TdTsText1 className="tdtstext3" color={concolor}></TdTsText1>
