@@ -60,7 +60,7 @@ export const Main = () => {
 
   return (
     <Wrap bgcolor={wrapcolor}>
-      <FirstSection />
+      <FirstSection color={wrapcolor} />
       <SecondSection />
       <ThirdSection concolor={wrapcolor} />
       <TopBtn onClick={topbtnhandle}>

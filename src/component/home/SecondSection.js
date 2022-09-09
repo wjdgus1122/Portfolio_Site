@@ -9,6 +9,10 @@ const Section = styled.div`
   padding: 0 50px;
   position: relative;
   box-sizing: border-box;
+  @media screen and (max-width: 500px) {
+    padding: 0 20px;
+    height: 60vh;
+  }
 `;
 const SkTitleWrap = styled.div`
   width: 170px;
@@ -16,6 +20,10 @@ const SkTitleWrap = styled.div`
   overflow: hidden;
   position: relative;
   margin-top: 30px;
+  @media screen and (max-width: 500px) {
+    height: 50px;
+    margin-top: 10px;
+  }
 `;
 const SkTitle = styled.div`
   font-size: 80px;
@@ -25,6 +33,9 @@ const SkTitle = styled.div`
   top: ${(props) => props.posi};
   left: 0;
   transition: 0.5s;
+  @media screen and (max-width: 500px) {
+    font-size: 40px;
+  }
 `;
 const SkillCon = styled.div`
   width: 100%;
@@ -32,6 +43,10 @@ const SkillCon = styled.div`
   margin-top: 50px;
   position: relative;
   overflow: hidden;
+  @media screen and (max-width: 500px) {
+    height: 120px;
+    margin-top: 30px;
+  }
 `;
 const SkillWrap = styled.div`
   width: 100%;
@@ -49,10 +64,17 @@ const Skill = styled.div`
   width: 200px;
   color: white;
   margin-right: 50px;
+  @media screen and (max-width: 500px) {
+    width: 70px;
+    margin-right: 20px;
+  }
 `;
 const SkillImg = styled.img`
   width: 100%;
   height: 200px;
+  @media screen and (max-width: 500px) {
+    height: 70px;
+  }
 `;
 const SkillText = styled.div`
   display: flex;
@@ -62,6 +84,9 @@ const SkillText = styled.div`
 const SkillTitle = styled.div`
   font-size: 40px;
   font-weight: 900;
+  @media screen and (max-width: 500px) {
+    font-size: 20px;
+  }
 `;
 const ExTextWrap = styled.div`
   width: 100%;
@@ -69,8 +94,13 @@ const ExTextWrap = styled.div`
   position: relative;
   overflow: hidden;
   margin-top: 50px;
+  @media screen and (max-width: 500px) {
+    height: 200px;
+    margin-top: 20px;
+  }
 `;
 const ExText = styled.div`
+  width: 100%;
   font-size: 20px;
   font-weight: 900;
   color: white;
@@ -84,6 +114,12 @@ const ExText = styled.div`
     font-size: 23px;
     color: ${mainStyle.bagieColor};
   }
+  @media screen and (max-width: 500px) {
+    font-size: 15px;
+    span {
+      font-size: 18px;
+    }
+  }
 `;
 const LibTitle = styled.div`
   font-size: 20px;
@@ -94,12 +130,23 @@ const LibTitle = styled.div`
     font-size: 23px;
     font-weight: 900;
   }
+  @media screen and (max-width: 500px) {
+    font-size: 15px;
+    margin-top: 20px;
+    span {
+      font-size: 18px;
+    }
+  }
 `;
 const PjTitleWrap = styled.div`
   width: 360px;
   height: 110px;
   position: relative;
   overflow: hidden;
+  @media screen and (max-width: 500px) {
+    height: 60px;
+    margin-top: 50px;
+  }
 `;
 const PjTitle = styled.div`
   font-size: 80px;
@@ -109,6 +156,9 @@ const PjTitle = styled.div`
   top: ${(props) => props.posi};
   left: 0;
   transition: 0.5s;
+  @media screen and (max-width: 500px) {
+    font-size: 40px;
+  }
 `;
 
 export const SecondSection = () => {
@@ -118,22 +168,43 @@ export const SecondSection = () => {
   const [pjtitle, setPjTitle] = useState("115px");
   const wphandle = () => {
     const scl = window.pageYOffset;
-    if (scl > 700) {
-      setSkTitle("0");
-      setSkPosi("0");
+    const hgt = window.innerWidth;
+    if (hgt < 500) {
+      if (scl > 400) {
+        setSkTitle("0");
+        setSkPosi("0");
+      } else {
+        setSkTitle("115px");
+        setSkPosi("260px");
+      }
+      if (scl > 500) {
+        setExText("0");
+      } else {
+        setExText("300px");
+      }
+      if (scl > 800) {
+        setPjTitle("0");
+      } else {
+        setPjTitle("115px");
+      }
     } else {
-      setSkTitle("115px");
-      setSkPosi("260px");
-    }
-    if (scl > 800) {
-      setExText("0");
-    } else {
-      setExText("300px");
-    }
-    if (scl > 1100) {
-      setPjTitle("0");
-    } else {
-      setPjTitle("115px");
+      if (scl > 500) {
+        setSkTitle("0");
+        setSkPosi("0");
+      } else {
+        setSkTitle("115px");
+        setSkPosi("260px");
+      }
+      if (scl > 600) {
+        setExText("0");
+      } else {
+        setExText("300px");
+      }
+      if (scl > 1100) {
+        setPjTitle("0");
+      } else {
+        setPjTitle("115px");
+      }
     }
   };
   window.addEventListener("scroll", wphandle);

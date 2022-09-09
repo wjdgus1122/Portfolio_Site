@@ -77,7 +77,7 @@ const TsText = styled.p`
   font-weight: 900;
   text-shadow: -1px 0 ${mainStyle.grayColor}, 0 1px ${mainStyle.grayColor},
     1px 0 ${mainStyle.grayColor}, 0 -1px ${mainStyle.grayColor};
-  color: ${mainStyle.mainColor};
+  color: ${(props) => props.ftcolor};
   @media screen and (max-width: 500px) {
     font-size: 30px;
   }
@@ -113,7 +113,7 @@ const ScrollText = styled.div`
   margin-bottom: 40px;
 `;
 
-export const FirstSection = () => {
+export const FirstSection = ({ color }) => {
   useEffect(() => {
     const mainset = () => {
       const mainGroup = document.querySelector(".mainlogo");
@@ -251,10 +251,10 @@ export const FirstSection = () => {
           </svg>
         </MainLogo>
         <Transtext1 className="tstextwrap">
-          <TsText className="tstext1"></TsText>
+          <TsText className="tstext1" ftcolor={color}></TsText>
         </Transtext1>
         <Transtext2 className="tstextwrap">
-          <TsText className="tstext2"></TsText>
+          <TsText className="tstext2" ftcolor={color}></TsText>
         </Transtext2>
         <ScrollIcon>
           <ScrollText>Scroll</ScrollText>
