@@ -10,6 +10,8 @@ import "swiper/css/mousewheel";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import "../../style/swiperstyle.css";
+import { useParams } from "react-router-dom";
+import { ReactDB } from "../../PortDB";
 
 const Wrap = styled.div`
   width: 100%;
@@ -180,44 +182,40 @@ const TsText = styled.div`
   }
 `;
 
-export const ProjectPage = ({ title, Db, tstext, bgcolor }) => {
-  
+export const ReactProject = ({ bgcolor }) => {
   useEffect(() => {
-    const pubset = () => {
-      const ts = document.querySelector(".tstext");
-      const text1 = `${tstext}`.split(" ");
-      const textarr = (ele, arr) => {
-        arr.push(...arr);
-        for (let i = 0; i < arr.length; i++) {
-          ele.innerText += `${arr[i]}\u00A0\u00A0\u00A0\u00A0`;
-        }
-      };
-      textarr(ts, text1);
-      let count1 = 0;
-      const animateText = (count, element, direction) => {
-        if (count > element.scrollWidth / 2) {
-          element.style.transform = `translateX(0)`;
-          count = 0;
-        }
-        element.style.transform = `translateX(${count * direction}px)`;
-        return count;
-      };
-      const textanimate = () => {
-        count1++;
-        count1 = animateText(count1, ts, -1);
-        window.requestAnimationFrame(textanimate);
-      };
-      textanimate();
+    const ts = document.querySelector(".tstext");
+    const text1 = `Html Css JavaScript ReactProject MovieApp Dyson`.split(" ");
+    const textarr = (ele, arr) => {
+      arr.push(...arr);
+      for (let i = 0; i < arr.length; i++) {
+        ele.innerText += `${arr[i]}\u00A0\u00A0\u00A0\u00A0`;
+      }
     };
-    pubset();
+    textarr(ts, text1);
+    let count1 = 0;
+    const animateText = (count, element, direction) => {
+      if (count > element.scrollWidth / 2) {
+        element.style.transform = `translateX(0)`;
+        count = 0;
+      }
+      element.style.transform = `translateX(${count * direction}px)`;
+      return count;
+    };
+    const textanimate = () => {
+      count1++;
+      count1 = animateText(count1, ts, -1);
+      window.requestAnimationFrame(textanimate);
+    };
+    textanimate();
   }, []);
   return (
     <Wrap color={bgcolor}>
-      <Title className="title">{title}</Title>
-      {Db.length < 2 ? (
+      <Title className="title">React Project</Title>
+      {ReactDB.length < 2 ? (
         <Swiper>
           <Page>1 / 1</Page>
-          {Db.map((con) => (
+          {ReactDB.map((con) => (
             <SwiperSlide>
               <SlideWrap>
                 <SlideNum color={bgcolor}>{con.pjnumber}</SlideNum>
@@ -254,10 +252,8 @@ export const ProjectPage = ({ title, Db, tstext, bgcolor }) => {
           }}
           mousewheel={true}
           navigation
-          observer={true}
-          observeParents={true}
         >
-          {Db.map((con) => (
+          {ReactDB.map((con) => (
             <SwiperSlide>
               <SlideWrap>
                 <SlideNum color={bgcolor}>{con.pjnumber}</SlideNum>
