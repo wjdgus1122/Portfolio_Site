@@ -19,7 +19,7 @@ const Wrap = styled.div`
     color: white;
   }
   & a:hover {
-    color: ${mainStyle.bagieColor};
+    color: ${mainStyle.hoverColor};
   }
   @media screen and (max-width: 500px) {
     & a:first-child {

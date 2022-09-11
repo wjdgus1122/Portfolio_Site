@@ -155,9 +155,15 @@ const TdBtn = styled.div`
   margin-top: 350px;
   margin-right: 130px;
   background-color: ${(props) => props.color};
+  transition: 0.5s;
   &.scbtn {
     margin-right: 0;
     margin-left: 130px;
+  }
+  &:hover {
+    background-color: white;
+    color: ${mainStyle.mainColor};
+    font-weight: 900;
   }
   @media screen and (max-width: 500px) {
     width: 150px;

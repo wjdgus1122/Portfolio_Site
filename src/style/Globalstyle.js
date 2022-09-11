@@ -7,6 +7,7 @@ export const mainStyle = {
   bagieColor: "#FFDF91",
   grayColor: "#707070",
   gitColor: "#6000AA",
+  hoverColor: "#FFC996",
 };
 
 export const Globalstyle = createGlobalStyle`
