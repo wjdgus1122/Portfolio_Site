@@ -91,6 +91,7 @@ const TextWrap = styled.div`
   font-size: 35px;
   font-weight: 900;
   color: white;
+  text-align: center;
   @media screen and (max-width: 500px) {
     width: 100%;
     font-size: 20px;
@@ -103,6 +104,7 @@ const TextWrap = styled.div`
 const BtnWrap = styled.div`
   width: 100%;
   display: flex;
+  justify-content: space-between;
   margin-top: 30px;
   @media screen and (max-width: 500px) {
     justify-content: center;
